@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Navbar & Cards</title>
+    <style>
+        /* Navbar Styles */
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgb(100, 171, 195);
+            padding: 10px 8px;
+        }
+
+        .nav-link {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-link a, .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+
+        /* Card Container Styles */
+        .card-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 20px; /* Added for spacing */
+        }
+
+        .card {
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1; /* Added to help cards share space equally */
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="logo">Flexi</div>
+        <ul class="nav-link">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="card-container">
+        <div class="card" style="background-color: aqua;">
+            <h3>Card 1</h3>
+            <p>This is a simple card layout using Flexbox.</p>
+        </div>
+
+        <div class="card" style="background-color: lightsalmon;">
+            <h3>Card 2</h3>
+            <p>It's flexible and adjusts to screen size.</p>
+        </div>
+
+        <div class="card" style="background-color: rgb(205, 143, 205);">
+            <h3>Card 3</h3>
+            <p>Cards are aligned perfectly with Flexbox.</p>
+        </div>
+    </section>
+
+</body>
+</html>
