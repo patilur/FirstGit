@@ -1,3 +1,13 @@
+window.addEventListener("DOMContentLoaded", () => {
+    axios.get("https://crudcrud.com/api/43d94499bd1b4361b65294ec4bd32d1b/appointmentData")
+        .then((res) => {
+            //console.log(res)
+            for (let i = 0; i < res.data.length; i++) {
+                displayUserOnScreen(res.data[i]);
+            }
+        })
+        .catch((err) => { console.log(err) })
+})
 function handleFormSubmit(event) {
     event.preventDefault();
     const userDetails = {
@@ -17,6 +27,8 @@ function handleFormSubmit(event) {
     document.getElementById("username").value = "";
     document.getElementById("email").value = "";
     document.getElementById("phone").value = "";
+
+
 }
 
 function displayUserOnScreen(userDetails) {
@@ -38,17 +50,44 @@ function displayUserOnScreen(userDetails) {
     const userList = document.querySelector("ul");
     userList.appendChild(userItem);
 
-    deleteBtn.addEventListener("click", function (event) {
-        userList.removeChild(event.target.parentElement);
-        localStorage.removeItem(userDetails.email);
+    // deleteBtn.addEventListener("click", function (event) {
+    //     userList.removeChild(event.target.parentElement);
+    //     localStorage.removeItem(userDetails.email);
+    // });
+
+    // DELETE
+    deleteBtn.addEventListener("click", function () {
+        axios
+            .delete(
+                `https://crudcrud.com/api/43d94499bd1b4361b65294ec4bd32d1b/appointmentData/${userDetails._id}`
+            )
+            .then(() => {
+                userList.removeChild(userItem);
+            })
+            .catch((error) => console.log(error));
     });
 
-    editBtn.addEventListener("click", function (event) {
-        userList.removeChild(event.target.parentElement);
-        localStorage.removeItem(userDetails.email);
-        document.getElementById("username").value = userDetails.username;
-        document.getElementById("email").value = userDetails.email;
-        document.getElementById("phone").value = userDetails.phone;
+    // editBtn.addEventListener("click", function (event) {
+    //     userList.removeChild(event.target.parentElement);
+    //     localStorage.removeItem(userDetails.email);
+    //     document.getElementById("username").value = userDetails.username;
+    //     document.getElementById("email").value = userDetails.email;
+    //     document.getElementById("phone").value = userDetails.phone;
+    // });
+
+    // EDIT (delete old data and refill form)
+    editBtn.addEventListener("click", function () {
+        axios
+            .delete(
+                `https://crudcrud.com/api/43d94499bd1b4361b65294ec4bd32d1b/appointmentData/${userDetails._id}`
+            )
+            .then(() => {
+                userList.removeChild(userItem);
+                document.getElementById("username").value = userDetails.username;
+                document.getElementById("email").value = userDetails.email;
+                document.getElementById("phone").value = userDetails.phone;
+            })
+            .catch((error) => console.log(error));
     });
 }
 
