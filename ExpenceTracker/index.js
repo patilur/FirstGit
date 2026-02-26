@@ -1,8 +1,6 @@
-// Run initialize() only after full HTML is loaded
 document.addEventListener("DOMContentLoaded", initialize);
 
-// When the page loads, fetch expenses from localStorage
-// and display them on the screen
+// When the page loads, fetch expenses from localStorage and display them on the screen
 function initialize() {
     // Get stored expenses or initialize empty array
     const expenseList = JSON.parse(localStorage.getItem("expenseList")) || [];
@@ -11,7 +9,6 @@ function initialize() {
     for (let i = 0; i < expenseList.length; i++) {
         display(expenseList[i]);
     }
-
     // Clear any previous edit state
     sessionStorage.removeItem("editId");
 }
@@ -21,7 +18,6 @@ function handleFormSubmit(event) {
     // Prevent page refresh on form submit
     event.preventDefault();
 
-    // Read form input values
     const expence = event.target.expense.value;
     const description = event.target.desc.value;
     const category = event.target.category.value;
@@ -67,7 +63,7 @@ function handleFormSubmit(event) {
     localStorage.setItem("expenseList", JSON.stringify(expenseList));
 }
 
-// Add new expense with unique ID
+// Add new expense
 function addData(expenseList, expenseDetails) {
     // Generate unique ID using timestamp
     expenseDetails.id = Date.now();
@@ -79,7 +75,6 @@ function addData(expenseList, expenseDetails) {
     display(expenseDetails);
 }
 
-// Display a single expense in the DOM
 function display(data) {
     const ul = document.querySelector("ul");
     const li = document.createElement("li");

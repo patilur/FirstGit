@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Throttling Example</title>
+</head>
+
+<body>
+
+    <button id="btn">Click Me Fast</button>
+    <p id="output"></p>
+
+    <script>
+        let isThrottled = false;
+
+        document.getElementById("btn").addEventListener("click", function () {
+            if (isThrottled) return;
+
+            document.getElementById("output").textContent = "Button click at" + new Data().toLocaleTimeString();
+
+            isThrottled = true;
+
+            setTimeout(() => {
+                isThrottled = false;
+            }, 400)
+        })
+
+
+
+
+        // let isThrottled = false;
+
+        // function handleClick() {
+        //     if (isThrottled) return;
+
+        //     document.getElementById("output").textContent =
+        //         "Button clicked at " + new Date().toLocaleTimeString();
+
+        //     isThrottled = true;
+
+        //     setTimeout(() => {
+        //         isThrottled = false;
+        //     }, 2000); // 2 seconds throttle time
+        // }
+
+        // document.getElementById("btn").addEventListener("click", handleClick);
+    </script>
+
+</body>
+
+</html>

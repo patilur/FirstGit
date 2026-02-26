@@ -1,10 +1,8 @@
 let totalBookingCount = 0;
 let allBookings = [];
 
-
-
 window.addEventListener("DOMContentLoaded", () => {
-    axios.get("https://crudcrud.com/api/aabe1744c2914e919ed9dbe28599a6d2/movieTicketBooking")
+    axios.get("https://crudcrud.com/api/dcc738e76bdb4951aea0588dd30df0b1/movieTicketBooking")
         .then((res) => {
             //console.log(res)
             allBookings = res.data;
@@ -43,7 +41,7 @@ function handleFormSubmit(event) {
     };
     axios
         .post(
-            "https://crudcrud.com/api/aabe1744c2914e919ed9dbe28599a6d2/movieTicketBooking",
+            "https://crudcrud.com/api/dcc738e76bdb4951aea0588dd30df0b1/movieTicketBooking",
             userDetails
         )
         .then((response) => {
@@ -94,7 +92,7 @@ function displayUserOnScreen(userDetails) {
     deleteBtn.addEventListener("click", function () {
         axios
             .delete(
-                `https://crudcrud.com/api/aabe1744c2914e919ed9dbe28599a6d2/movieTicketBooking/${userDetails._id}`
+                `https://crudcrud.com/api/dcc738e76bdb4951aea0588dd30df0b1/movieTicketBooking/${userDetails._id}`
             )
             .then(() => {
                 for (let i = 0; i < allBookings.length; i++) {
@@ -117,7 +115,7 @@ function displayUserOnScreen(userDetails) {
     editBtn.addEventListener("click", function () {
         axios
             .delete(
-                `https://crudcrud.com/api/aabe1744c2914e919ed9dbe28599a6d2/movieTicketBooking/${userDetails._id}`
+                `https://crudcrud.com/api/dcc738e76bdb4951aea0588dd30df0b1/movieTicketBooking/${userDetails._id}`
             )
             .then(() => {
                 for (let i = 0; i < allBookings.length; i++) {

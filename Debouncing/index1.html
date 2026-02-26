@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Debounce Example</title>
+</head>
+
+<body>
+    <center>
+        <h1>Enter your password</h1>
+        <input type="text" id="searchInput" placeholder="password" />
+        <div id="resultBox"></div>
+    </center>
+    <script>
+        let count=0;
+        let time;
+        const searchInput=document.getElementById("searchInput");
+        const result=document.getElementById("resultBox");
+        searchInput.addEventListener("input",function(event){
+            const query=event.target.value.trim();
+            clearTimeout(time);
+            time=setTimeout(()=>{
+                if(query!=='password'){
+                    count++;
+                    resultBox.textContent = "Wrong password attempt: " + count;
+                    resultBox.style.color = "red";
+                }else{
+                    resultBox.textContent="Correct";
+                    resultBox.style.color = "green";
+                    count=0;
+                }
+            },500);
+        })
+    </script>
+
+</body>
+
+</html>
